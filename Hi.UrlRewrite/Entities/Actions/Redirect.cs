@@ -12,6 +12,7 @@ namespace Hi.UrlRewrite.Entities.Actions
         public Guid? RewriteItemId { get; set; }
         public string RewriteItemAnchor { get; set; }
         public bool AppendQueryString { get; set; }
+        public string RewriteItemQueryString { get; set; }
 
         public HttpCacheability? HttpCacheability { get; set; }
         public bool StopProcessingOfSubsequentRules { get; set; }

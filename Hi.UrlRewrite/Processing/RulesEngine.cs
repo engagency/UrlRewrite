@@ -163,8 +163,9 @@ namespace Hi.UrlRewrite.Processing
             string actionRewriteUrl;
             Guid? redirectItem;
             string redirectItemAnchor;
+            string redirectItemQueryString;
 
-            GetRedirectUrlOrItemId(redirectTo, out actionRewriteUrl, out redirectItem, out redirectItemAnchor);
+            GetRedirectUrlOrItemId(redirectTo, out actionRewriteUrl, out redirectItem, out redirectItemAnchor, out redirectItemQueryString);
 
             Log.Debug(this, simpleRedirectItem.Database, "Creating Inbound Rule From Simple Redirect Item - {0} - id: {1} actionRewriteUrl: {2} redirectItem: {3}", simpleRedirectItem.Name, simpleRedirectItem.ID.Guid, actionRewriteUrl, redirectItem);
 
@@ -178,6 +179,7 @@ namespace Hi.UrlRewrite.Processing
                     RewriteUrl = actionRewriteUrl,
                     RewriteItemId = redirectItem,
                     RewriteItemAnchor = redirectItemAnchor,
+                    RewriteItemQueryString = redirectItemQueryString,
                     StopProcessingOfSubsequentRules = false,
                     HttpCacheability = HttpCacheability.NoCache
                 },
@@ -219,11 +221,12 @@ namespace Hi.UrlRewrite.Processing
             return site;
         }
 
-        internal static void GetRedirectUrlOrItemId(LinkField redirectTo, out string actionRewriteUrl, out Guid? redirectItemId, out string redirectItemAnchor)
+        internal static void GetRedirectUrlOrItemId(LinkField redirectTo, out string actionRewriteUrl, out Guid? redirectItemId, out string redirectItemAnchor, out string redirectItemQueryString)
         {
             actionRewriteUrl = null;
             redirectItemId = null;
             redirectItemAnchor = null;
+            redirectItemQueryString = redirectTo.QueryString;
 
             if (redirectTo.TargetItem != null)
             {

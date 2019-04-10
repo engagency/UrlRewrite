@@ -389,6 +389,7 @@ namespace Hi.UrlRewrite.Processing
             var rewriteUrl = redirectAction.RewriteUrl;
             var rewriteItemId = redirectAction.RewriteItemId;
             var rewriteItemAnchor = redirectAction.RewriteItemAnchor;
+            var rewriteItemQueryString = redirectAction.RewriteItemQueryString;
 
             if (string.IsNullOrEmpty(rewriteUrl) && rewriteItemId == null)
             {
@@ -414,6 +415,11 @@ namespace Hi.UrlRewrite.Processing
             if (redirectAction.AppendQueryString)
             {
                 rewriteUrl += uri.Query;
+            }
+
+            if (!string.IsNullOrEmpty(rewriteItemQueryString))
+            {
+                rewriteUrl += (rewriteUrl.Contains("?") ? "&" : "?") + rewriteItemQueryString;
             }
 
             rewriteUrl = RewriteHelper.ReplaceRuleBackReferences(inboundRuleMatch, rewriteUrl);
@@ -430,6 +436,7 @@ namespace Hi.UrlRewrite.Processing
             var rewriteUrl = redirectAction.RewriteUrl;
             var rewriteItemId = redirectAction.RewriteItemId;
             var rewriteItemAnchor = redirectAction.RewriteItemAnchor;
+            var rewriteItemQueryString = redirectAction.RewriteItemQueryString;
 
             if (string.IsNullOrEmpty(rewriteUrl) && rewriteItemId == null)
             {
@@ -454,6 +461,11 @@ namespace Hi.UrlRewrite.Processing
             if (redirectAction.AppendQueryString)
             {
                 rewriteUrl += uri.Query;
+            }
+
+            if (!string.IsNullOrEmpty(rewriteItemQueryString))
+            {
+                rewriteUrl += (rewriteUrl.Contains("?") ? "&" : "?") + rewriteItemQueryString;
             }
 
             rewriteUrl = RewriteHelper.ReplaceRuleBackReferences(inboundRuleMatch, rewriteUrl);

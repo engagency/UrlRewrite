@@ -787,11 +787,13 @@ namespace Hi.UrlRewrite
             string actionRewriteUrl;
             Guid? redirectItemId;
             string redirectItemAnchor;
+            string redirectItemQueryString;
 
-            RulesEngine.GetRedirectUrlOrItemId(redirectTo, out actionRewriteUrl, out redirectItemId, out redirectItemAnchor);
+            RulesEngine.GetRedirectUrlOrItemId(redirectTo, out actionRewriteUrl, out redirectItemId, out redirectItemAnchor, out redirectItemQueryString);
             redirectAction.RewriteItemId = redirectItemId;
             redirectAction.RewriteItemAnchor = redirectItemAnchor;
             redirectAction.RewriteUrl = actionRewriteUrl;
+            redirectAction.RewriteItemQueryString = redirectItemQueryString;
         }
 
         private static void GetBaseAppendQueryStringItem(BaseAppendQuerystringItem baseAppendQueryString, IBaseAppendQueryString redirectAction)

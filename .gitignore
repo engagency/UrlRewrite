@@ -161,3 +161,4 @@ Assemblies/
 /packages
 
 .vs/
+Hi.UrlRewrite/Properties/PublishProfiles/Local.pubxml
